@@ -12,7 +12,7 @@
 #ifndef BLACKSERVO_H_
 #define BLACKSERVO_H_
 
-#include "../BlackPWM/BlackPWM.h"
+#include "BlackPWM.h"
 
 namespace BlackLib {
 

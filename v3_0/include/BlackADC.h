@@ -30,7 +30,7 @@
 #ifndef BLACKADC_H_
 #define BLACKADC_H_
 
-#include "../BlackCore.h"
+#include "BlackCore.h"
 
 #include <cmath>           // need for round() function in BlackADC::getParsedValue()
 #include <string>

@@ -35,7 +35,7 @@
 #define BLACKSPI_H_
 
 
-#include "../BlackCore.h"
+#include "BlackCore.h"
 
 #include <cstring>
 #include <string>

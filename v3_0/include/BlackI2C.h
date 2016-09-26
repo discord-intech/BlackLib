@@ -35,7 +35,7 @@
 #define BLACKI2C_H_
 
 
-#include "../BlackCore.h"
+#include "BlackCore.h"
 #include <iostream>
 
 #include <cstring>

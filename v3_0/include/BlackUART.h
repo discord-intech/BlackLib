@@ -32,7 +32,7 @@
 #ifndef BLACKUART_H_
 #define BLACKUART_H_
 
-#include "../BlackCore.h"
+#include "BlackCore.h"
 
 #include <string>
 #include <fstream>

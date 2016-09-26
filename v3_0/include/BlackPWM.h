@@ -31,7 +31,7 @@
 #ifndef BLACKPWM_H_
 #define BLACKPWM_H_
 
-#include "../BlackCore.h"
+#include "BlackCore.h"
 
 #include <iostream>
 #include <fstream>
