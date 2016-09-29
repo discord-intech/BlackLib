@@ -32,16 +32,16 @@
 #define BLACKLIB_H_
 
 #include "BlackCore.h"
-#include "BlackADC/BlackADC.h"
-#include "BlackPWM/BlackPWM.h"
-#include "BlackGPIO/BlackGPIO.h"
-#include "BlackUART/BlackUART.h"
-#include "BlackSPI/BlackSPI.h"
-#include "BlackI2C/BlackI2C.h"
-#include "BlackThread/BlackThread.h"
-#include "BlackMutex/BlackMutex.h"
-#include "BlackDirectory/BlackDirectory.h"
-#include "BlackTime/BlackTime.h"
+#include "BlackADC.h"
+#include "BlackPWM.h"
+#include "BlackGPIO.h"
+#include "BlackUART.h"
+#include "BlackSPI.h"
+#include "BlackI2C.h"
+#include "BlackThread.h"
+#include "BlackMutex.h"
+#include "BlackDirectory.h"
+#include "BlackTime.h"
 
 
 #endif /* BLACKLIB_H_ */
