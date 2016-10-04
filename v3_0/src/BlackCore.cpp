@@ -45,7 +45,7 @@ namespace BlackLib
 
         this->findCapeMgrName();
         this->findOcpName();
-        this->slotsFilePath = "/sys/devices/" + this->capeMgrName + "/slots";
+        this->slotsFilePath = "/sys/devices/platform/" + this->capeMgrName + "/slots";
     }
 
     BlackCore::~BlackCore()
@@ -107,11 +107,11 @@ namespace BlackLib
 
     bool        BlackCore::findCapeMgrName()
     {
-        std::string searchResult = this->searchDirectory("/sys/devices/","bone_capemgr.");
+        std::string searchResult = this->searchDirectory("/sys/devices/platform/","bone_capemgr");
 
         if(searchResult == SEARCH_DIR_NOT_FOUND)
         {
-            this->capeMgrName = "bone_capemgr." + DEFAULT_CAPE_MGR_NUMBER;
+            this->capeMgrName = "bone_capemgr";
             this->coreErrors->capeMgrError = true;
             return false;
         }
@@ -125,11 +125,11 @@ namespace BlackLib
 
     bool        BlackCore::findOcpName()
     {
-        std::string searchResult = this->searchDirectory("/sys/devices/","ocp.");
+        std::string searchResult = this->searchDirectory("/sys/devices/platform/","ocp");
 
         if(searchResult == SEARCH_DIR_NOT_FOUND)
         {
-            this->ocpName = "ocp." + DEFAULT_OCP_NUMBER;
+            this->ocpName = "ocp";
             this->coreErrors->ocpError = true;
             return false;
         }
@@ -147,7 +147,7 @@ namespace BlackLib
     std::string BlackCore::searchDirectoryOcp(BlackCore::ocpSearch searchThis)
     {
         std::string searchResult;
-        std::string searchPath = "/sys/devices/" + this->getOcpName() + "/";
+        std::string searchPath = "/sys/devices/platform/" + this->getOcpName() + "/";
 
         if( searchThis == this->SPI0 )
         {

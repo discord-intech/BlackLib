@@ -48,8 +48,8 @@ namespace BlackLib
     */
     enum pwmName            {   P8_13                   = 0,
                                 P8_19                   = 1,
-                                P9_14                   = 2,
-                                P9_16                   = 3,
+                                P9_14                   = 3,
+                                P9_16                   = 2,
                                 P9_21                   = 4,
                                 P9_22                   = 5,
                                 P9_42                   = 6,
@@ -67,14 +67,22 @@ namespace BlackLib
     /*!
     * This string array is used for mapping pwm name.
     */
-    const std::string pwmNameMap[7] = { "P8_13",
+    const std::string pwmNameMap[7] = { "pwmchip5",
+                                        "pwmchip5",
+                                        "pwmchip3",
+                                        "pwmchip3",
+                                        "pwmchip0",
+                                        "pwmchip0",
+                                        "pwmchip2",
+    };
+   /* const std::string pwmNameMap[7] = { "P8_13",
                                         "P8_19",
                                         "P9_14",
                                         "P9_16",
                                         "P9_21",
                                         "P9_22",
                                         "P9_42",
-                                    };
+                                    };*/
 
     /*!
     * This enum is used for setting PWM polarity.

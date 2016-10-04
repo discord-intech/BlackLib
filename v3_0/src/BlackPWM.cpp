@@ -48,7 +48,7 @@ namespace BlackLib
 
         this->loadDeviceTree();
 
-        this->pwmTestPath   = "/sys/devices/" + this->getOcpName() + "/" + this->findPwmTestName( this->pwmPinName );
+        this->pwmTestPath   = "/sys/class/pwm/"+pwmNameMap[pwm]+"/pwm"+std::to_string((this->pwmPinName % 2) ? 1 : 0);
     }
 
 
@@ -78,8 +78,22 @@ namespace BlackLib
             this->pwmCoreErrors->dtSsError  = false;
         }
 
+        slotsFile.open("/sys/class/pwm/" + pwmNameMap[this->pwmPinName] + "/export", std::ios::out);
+        if(slotsFile.fail())
+        {
+            slotsFile.close();
+            this->pwmCoreErrors->dtError    = true;
+            return false;
+        }
+        else
+        {
+            slotsFile << (this->pwmPinName % 2) ? 1 : 0;
+            slotsFile.close();
+            this->pwmCoreErrors->dtError    = false;
+            return true;
+        }
 
-        slotsFile.open(file.c_str(), std::ios::out);
+     /*   slotsFile.open(file.c_str(), std::ios::out);
         if(slotsFile.fail())
         {
             slotsFile.close();
@@ -92,7 +106,9 @@ namespace BlackLib
             slotsFile.close();
             this->pwmCoreErrors->dtError    = false;
             return true;
-        }
+        }*/
+
+
     }
 
     std::string BlackCorePWM::findPwmTestName(pwmName pwm)
@@ -170,7 +186,7 @@ namespace BlackLib
 
     std::string BlackCorePWM::getRunFilePath()
     {
-        return (this->pwmTestPath + "/run");
+        return (this->pwmTestPath + "/enable");
     }
 
     std::string BlackCorePWM::getPolarityFilePath()
