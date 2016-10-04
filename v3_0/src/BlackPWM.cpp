@@ -85,6 +85,12 @@ namespace BlackLib
             this->pwmCoreErrors->dtSsError  = false;
         }
 
+        if(pwmPinName >= pwmNameMap->size() || pwmPinName < 0)
+        {
+            this->pwmCoreErrors->dtError    = true;
+            return false;
+        }
+
         slotsFile.open("/sys/class/pwm/" + pwmNameMap[this->pwmPinName] + "/export", std::ios::out);
         if(slotsFile.fail())
         {
