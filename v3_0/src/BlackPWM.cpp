@@ -48,7 +48,14 @@ namespace BlackLib
 
         this->loadDeviceTree();
 
-        this->pwmTestPath   = "/sys/class/pwm/"+pwmNameMap[pwm]+"/pwm"+std::to_string((this->pwmPinName % 2) ? 1 : 0);
+        if(pwm < pwmNameMap->size() && pwm > 0)
+        {
+            this->pwmTestPath   = "/sys/class/pwm/"+pwmNameMap[pwm]+"/pwm"+std::to_string((this->pwmPinName % 2) ? 1 : 0);
+        }
+        else
+        {
+            this->pwmTestPath = "";
+        }
     }
 
 
