@@ -43,9 +43,11 @@ namespace BlackLib
     {
         this->coreErrors = new errorCore();
 
-        this->findCapeMgrName();
-        this->findOcpName();
-        this->slotsFilePath = "/sys/devices/platform/" + this->capeMgrName + "/slots";
+     //   this->findCapeMgrName();
+      //  this->findOcpName();
+        this->slotsFilePath = "/sys/devices/platform/bone_capemgr/slots";
+        this->ocpName = "ocp";
+        this->capeMgrName = "bone_capemgr";
     }
 
     BlackCore::~BlackCore()
