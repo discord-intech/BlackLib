@@ -46,15 +46,30 @@ namespace BlackLib
         this->pwmPinName    = pwm;
         this->pwmCoreErrors = new errorCorePWM( this->getErrorsFromCore() );
 
-        this->loadDeviceTree();
+       // this->loadDeviceTree();
 
         if(pwm < pwmNameMap->size() && pwm > 0)
         {
-            this->pwmTestPath   = "/sys/class/pwm/"+pwmNameMap[pwm]+"/pwm"+std::to_string((this->pwmPinName % 2) ? 1 : 0);
+            this->pwmTestPath   = "/sys/class/pwm/"+pwmNameMap[pwm]+"/pwm"+std::to_string((pwm % 2) ? 1 : 0);
+            std::ofstream slotsFile;
+
+            slotsFile.open("/sys/class/pwm/" + pwmNameMap[pwm] + "/export", std::ios::out);
+            if(slotsFile.fail())
+            {
+                slotsFile.close();
+                this->pwmCoreErrors->dtError    = true;
+            }
+            else
+            {
+                slotsFile << (this->pwmPinName % 2) ? 1 : 0;
+                slotsFile.close();
+                this->pwmCoreErrors->dtError    = false;
+            }
         }
         else
         {
             this->pwmTestPath = "";
+            this->pwmCoreErrors->dtError    = true;
         }
     }
 
@@ -194,7 +209,7 @@ namespace BlackLib
 
     std::string BlackCorePWM::getDutyFilePath()
     {
-        return (this->pwmTestPath + "/duty");
+        return (this->pwmTestPath + "/duty_cycle");
     }
 
     std::string BlackCorePWM::getRunFilePath()

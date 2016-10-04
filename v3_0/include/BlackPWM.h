@@ -67,13 +67,13 @@ namespace BlackLib
     /*!
     * This string array is used for mapping pwm name.
     */
-    const std::string pwmNameMap[7] = { "pwmchip5",
-                                        "pwmchip5",
-                                        "pwmchip3",
-                                        "pwmchip3",
-                                        "pwmchip0",
-                                        "pwmchip0",
+    const std::string pwmNameMap[7] = { "pwmchip4",
+                                        "pwmchip4",
                                         "pwmchip2",
+                                        "pwmchip2",
+                                        "pwmchip0",
+                                        "pwmchip0",
+                                        "placeholder",
     };
    /* const std::string pwmNameMap[7] = { "P8_13",
                                         "P8_19",
