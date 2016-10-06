@@ -425,7 +425,7 @@ namespace BlackLib
         }
         else
         {
-            dutyFile << static_cast<int64_t>(std::floor((this->getNumericPeriodValue()) * (1.0 - (percantage/100))));
+            dutyFile << static_cast<int64_t>(std::floor((this->getNumericPeriodValue()) * (percantage/100.)));
             dutyFile.close();
             this->pwmErrors->dutyFileError = false;
             return true;
