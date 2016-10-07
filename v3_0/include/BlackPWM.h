@@ -682,6 +682,8 @@ namespace BlackLib
             */
             bool            setSpaceRatioTime(uint64_t space, timeType tType = nanosecond);
 
+            bool            setDutyCycle(uint64_t);
+
             /*! @brief Sets load time value of pwm signal.
             *
             * If input parameter's nanosecond equivalent is in range (from 0 to 10^9), this function changes duty value

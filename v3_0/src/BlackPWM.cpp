@@ -522,6 +522,33 @@ namespace BlackLib
         }
     }
 
+    bool        BlackPWM::setDutyCycle(uint64_t load)
+    {
+        if( load > 1000000000)
+        {
+            this->pwmErrors->outOfRange = true;
+            return false;
+        }
+        else
+        {
+            std::ofstream dutyFile;
+            dutyFile.open(this->dutyPath.c_str(),std::ios::out);
+            if(dutyFile.fail())
+            {
+                dutyFile.close();
+                this->pwmErrors->dutyFileError = true;
+                return false;
+            }
+            else
+            {
+                dutyFile << load;
+                dutyFile.close();
+                this->pwmErrors->dutyFileError = false;
+                return true;
+            }
+        }
+    }
+
     bool        BlackPWM::setPolarity(polarityType polarity)
     {
         std::ofstream polarityFile;
