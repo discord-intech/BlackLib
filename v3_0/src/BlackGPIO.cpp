@@ -73,11 +73,11 @@ namespace BlackLib
     {
         std::ofstream expFile;
 
-        std::cout << "exporting for GPIO" << this->pinNumericName << std::endl;
 
         expFile.open(this->expPath.c_str(),std::ios::out);
         if(expFile.fail())
         {
+            std::cout << "could not open export file for GPIO" << this->pinNumericName << std::endl;
             expFile.close();
             this->gpioCoreError->exportFileError = true;
             return false;
