@@ -74,6 +74,8 @@ namespace BlackLib
     {
         std::ofstream expFile;
 
+        std::cout << this->pinNumericName << std::endl;
+
         system((std::string("echo ")+std::to_string(this->pinNumericName)+std::string(" > /sys/class/gpio/export")).c_str());
 
     /*    expFile.open(this->expPath.c_str(),std::ios::out);
