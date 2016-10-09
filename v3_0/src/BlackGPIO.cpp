@@ -29,6 +29,7 @@
 
 
 
+#include <iostream>
 #include "BlackGPIO.h"
 
 
@@ -71,6 +72,8 @@ namespace BlackLib
     bool        BlackCoreGPIO::doExport()
     {
         std::ofstream expFile;
+
+        std::cout << "exporting for GPIO" << this->pinNumericName << std::endl;
 
         expFile.open(this->expPath.c_str(),std::ios::out);
         if(expFile.fail())
