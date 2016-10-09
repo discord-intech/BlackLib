@@ -99,7 +99,20 @@ namespace BlackLib
     {
         std::ofstream directionFile;
 
-        directionFile.open(this->directionPath.c_str(), std::ios::out);
+        if(this->pinNumericType == static_cast<int>(output))
+        {
+            system((std::string("echo out > /sys/class/gpio/gpio")+std::to_string(this->pinNumericName)+std::string("/direction")).c_str());
+        }
+        else
+        {
+            system((std::string("echo in > /sys/class/gpio/gpio")+std::to_string(this->pinNumericName)+std::string("/direction")).c_str());
+        }
+
+        this->gpioCoreError->directionFileError = false;
+        return true;
+
+
+      /*  directionFile.open(this->directionPath.c_str(), std::ios::out);
         if(directionFile.fail())
         {
             directionFile.close();
@@ -120,7 +133,7 @@ namespace BlackLib
             directionFile.close();
             this->gpioCoreError->directionFileError = false;
             return true;
-        }
+        }*/
     }
 
     bool        BlackCoreGPIO::doUnexport()
@@ -316,7 +329,7 @@ namespace BlackLib
 
     bool        BlackGPIO::setValue(digitalValue status)
     {
-        if( !(this->pinDirection == output) )
+        if(this->pinDirection != output)
         {
             this->gpioErrors->writeError = true;
             this->gpioErrors->forcingError = true;
