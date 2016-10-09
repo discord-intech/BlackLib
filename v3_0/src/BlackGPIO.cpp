@@ -30,6 +30,7 @@
 
 
 #include <iostream>
+#include <stdlib.h>
 #include "BlackGPIO.h"
 
 
@@ -73,11 +74,11 @@ namespace BlackLib
     {
         std::ofstream expFile;
 
+        system((std::string("echo ")+std::to_string(this->pinNumericName)+std::string(" > /sys/class/gpio/export")).c_str());
 
-        expFile.open(this->expPath.c_str(),std::ios::out);
+    /*    expFile.open(this->expPath.c_str(),std::ios::out);
         if(expFile.fail())
         {
-            std::cout << "could not open export file for GPIO" << this->pinNumericName << std::endl;
             expFile.close();
             this->gpioCoreError->exportFileError = true;
             return false;
@@ -89,7 +90,9 @@ namespace BlackLib
             expFile.close();
             this->gpioCoreError->exportFileError = false;
             return true;
-        }
+        }*/
+        this->gpioCoreError->exportFileError = false;
+        return true;
     }
 
     bool        BlackCoreGPIO::setDirection()
